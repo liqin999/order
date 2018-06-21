@@ -1,11 +1,13 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Home from '@/components/Home'
-import Menu from '@/components/Menu'
-import Admin from '@/components/Admin'
-import About from '@/components/About'
-import Login from '@/components/login'
-import Register from '@/components/register'
+
+//路由的懒加载
+const Home = ()=> import('@/components/Home')
+const Menu = ()=> import('@/components/Menu')
+const Admin = ()=> import('@/components/Admin')
+const About = ()=> import('@/components/About')
+const Login = ()=> import('@/components/Login')
+const Register = ()=> import('@/components/Register')
 
 Vue.use(Router)
 

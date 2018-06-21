@@ -25,6 +25,7 @@
 			return{
 				email:'',
 				pass:'',
+				repass:'',
 			}
 		},
 		methods:{
