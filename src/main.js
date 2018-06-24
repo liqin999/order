@@ -8,8 +8,7 @@ Vue.config.productionTip = false
 
 import axios from "axios"
 
-//axios.defaults.baseURL = 'https://api.example.com';
-
+//axios.defaults.baseURL = 'https://wd2468178309upkmpi.wilddogio.com/'
 
 //全局使用axios，作为vue的原型的方法
 Vue.prototype.$axios = axios;
