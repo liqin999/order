@@ -4,7 +4,7 @@
     <nav class="navbar navbar-expand-lg navbar-light">
       <a href="/" class="navbar-brand">Pizza点餐系统</a>
       <ul class="nav nav-pills navbar-nav">
-        <li><router-link :to="{name:'homeLink'}" class="nav-link">主页</router-link></li>
+        <li><router-link :to="{name:'homeLink'}" class="nav-link">主页12</router-link></li>
         <li><router-link :to="{name:'menuLink'}" class="nav-link">菜单</router-link></li>
         <li><router-link :to="{name:'adminLink'}" class="nav-link">管理</router-link></li>
         <li><router-link :to="{name:'aboutLink'}" class="nav-link">关于我们</router-link></li>
