@@ -30,8 +30,9 @@
 
 
 		<!-- 购物车 -->
-		<div class="col-sm-12 col-md-4" v-show="baskets.length>0">
-		      <table class="table" >
+		<div class="col-sm-12 col-md-4" >
+			  <h2>购物车商品</h2>
+		      <table class="table" v-show="baskets.length>0">
 		        <thead class="thead-default">
 		          <tr>
 		            <th>数量</th>
@@ -57,8 +58,11 @@
 		          </tr>
 		        </tbody>
 		      </table>
-		      <p>总价: </p>
-		      <button class="btn btn-success btn-block">提交</button>
+		      <div v-show="baskets.length>0">
+		      	<p>总价: {{total}}元</p>
+		        <button class="btn btn-success btn-block">提交</button>
+		      </div>	
+		      
        </div>
 
 	</div>
@@ -112,6 +116,17 @@
 		        }
 			}
 		},
+		computed:{
+			total(){//商品的总价是根据数量和单价的乘积的累加 如果一个值是有赖于另外的值的改变，从而动态改变的，首先考虑动态属性
+				//循环进行赋值，元素进行循环赋值
+				let result = 0;
+				this.baskets.forEach((item,index)=>{
+					result+=item.num * item.price
+				})
+				return result;
+
+			}
+		},
 		methods:{
 			//实现将商品加入到购物车中
 			addToBasket(name,option){
@@ -122,7 +137,19 @@
 				  	price:option.price,
 				  	size:option.size
 				}
-				this.baskets.push(basket)
+
+				//避免重复的添加的，相同的时候，仅仅让数量进行增加
+				let tempAry = this.baskets.filter(item=>{
+					return item.name == name && item.size == option.size
+				})
+
+				console.log(tempAry)
+				if(tempAry.length >0){
+					tempAry[0].num++
+				}else{
+					this.baskets.push(basket)
+				}
+				
 			},
 			increaseFn(item){//vue中数据驱动视图，数据发生变化的时候，视图也会变化
 				//对象是引用类型，是值的变化
@@ -131,11 +158,16 @@
 
 			},
 			decreaseFn(item){
-				item.num--;
-				if(item.num == 0){
-					item.num =0
+				 
+				if(item.num > 1){
+				    item.num--;
+				}else{
+					this.removeItem(item);
 				}
 				console.log(item)
+			},
+			removeItem(item){
+				this.baskets.splice(this.baskets.indexOf(item),1)
 			}
 		},
 		mounted(){
