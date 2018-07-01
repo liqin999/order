@@ -5,9 +5,9 @@
 			<app-new-pizaa></app-new-pizaa>	
 		</div>
 
-
 		<div class="col-sm-12 col-md-4">
-			<!-- 品种展示1234 -->
+
+			<!-- 品种展示12 -->
 		</div>
 	</div>
 </template>
