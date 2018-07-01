@@ -7,7 +7,7 @@
 
 
 		<div class="col-sm-12 col-md-4">
-			<!-- 品种       展示 -->
+			<!-- 品种展示12 -->
 		</div>
 	</div>
 </template>
